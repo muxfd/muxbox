@@ -42,3 +42,5 @@ jobs:
           tags: |
             muxfd/muxbox-srt-relay:latest
             ghcr.io/muxfd/muxbox-srt-relay:latest
+          secrets: |
+            GIT_AUTH_TOKEN=${{ github.token }}

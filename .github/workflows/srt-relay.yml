@@ -20,6 +20,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          dockerfile: ./srt-relay/Dockerfile
+          file: ./srt-relay/Dockerfile
           push: true
           tags: muxfd/muxbox-srt-relay:latest

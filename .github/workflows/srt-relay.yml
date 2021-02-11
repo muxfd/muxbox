@@ -42,9 +42,3 @@ jobs:
           tags: |
             muxfd/muxbox-srt-relay:latest
             ghcr.io/muxfd/muxbox-srt-relay:latest
-      - name: Update repo description
-        uses: peter-evans/dockerhub-description@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: muxfd/muxbox-srt-relay

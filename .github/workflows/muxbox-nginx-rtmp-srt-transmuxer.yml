@@ -42,3 +42,5 @@ jobs:
           tags: |
             muxfd/muxbox-nginx-rtmp-srt-transmuxer:latest
             ghcr.io/muxfd/muxbox-nginx-rtmp-srt-transmuxer:latest
+          secrets: |
+            GIT_AUTH_TOKEN=${{ github.token }}

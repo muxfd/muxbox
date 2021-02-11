@@ -44,7 +44,7 @@ service speedify-sharing restart
 # Configure iptables
 apt -qq install iptables-persistent
 
-iptables -t mangle -I POSTROUTING -o wwan0 -j TTL --ttl-set 65
-iptables -t mangle -I PREROUTING -i wwan0 -j TTL --ttl-set 65
-ip6tables -t mangle -A POSTROUTING -o wwan0 -j HL --hl-set 65
-ip6tables -t mangle -I PREROUTING -i wwan0 -j HL --hl-set 65
+iptables -t mangle -I POSTROUTING -j TTL --ttl-set 65
+iptables -t mangle -I PREROUTING -j TTL --ttl-set 65
+ip6tables -t mangle -A POSTROUTING -j HL --hl-set 65
+ip6tables -t mangle -I PREROUTING -j HL --hl-set 65

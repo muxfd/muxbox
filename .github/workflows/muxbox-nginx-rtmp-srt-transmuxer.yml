@@ -26,12 +26,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Login to GitHub
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GCR_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
@@ -41,6 +35,3 @@ jobs:
           push: true
           tags: |
             muxfd/muxbox-nginx-rtmp-srt-transmuxer:latest
-            ghcr.io/muxfd/muxbox-nginx-rtmp-srt-transmuxer:latest
-          secrets: |
-            GIT_AUTH_TOKEN=${{ github.token }}

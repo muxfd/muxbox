@@ -3,8 +3,6 @@ name: srt-relay
 on:
   push:
     branches: main
-    paths:
-      - "srt-relay/**"
 
 jobs:
   docker:

@@ -1,6 +1,9 @@
 version: "3.9"
 services:
-  nginx:
+  nginx-rtmp-srt-transmuxer:
     build: ./nginx-rtmp-srt-transmuxer
     ports:
       - "1935:1935"
+  rtirl-sensors:
+    build: ./rtirl-sensors
+    privileged: true

@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  nginx:
+    build: ./nginx-rtmp-srt-transmuxer
+    ports:
+      - "1935:1935"

@@ -22,7 +22,7 @@ jobs:
         with:
           context: ./srt-relay
           file: ./srt-relay/Dockerfile
-          platform: linux/amd64
+          platforms: linux/amd64
           push: true
           tags: muxfd/muxbox-srt-relay:latest
   github:
@@ -43,7 +43,7 @@ jobs:
         with:
           context: ./srt-relay
           file: ./srt-relay/Dockerfile
-          platform: linux/amd64
+          platformss: linux/amd64
           push: true
           tags: muxfd/muxbox/srt-relay:latest
           secrets: |

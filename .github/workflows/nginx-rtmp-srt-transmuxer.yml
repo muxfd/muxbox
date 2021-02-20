@@ -31,7 +31,7 @@ jobs:
         with:
           context: ./nginx-rtmp-srt-transmuxer
           file: ./nginx-rtmp-srt-transmuxer/Dockerfile
-          platforms: linux/arm64,linux/arm/v7
+          platforms: linux/arm64
           push: true
           tags: |
             muxfd/muxbox-nginx-rtmp-srt-transmuxer:latest

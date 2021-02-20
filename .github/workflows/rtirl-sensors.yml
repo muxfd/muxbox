@@ -31,7 +31,7 @@ jobs:
         with:
           context: ./rtirl-sensors
           file: ./rtirl-sensors/Dockerfile
-          platforms: linux/arm64,linux/arm/v7
+          platforms: linux/arm64
           push: true
           tags: |
             muxfd/muxbox-rtirl-sensors:latest

@@ -8,9 +8,11 @@ import os
 def run():
     key = os.environ.get("RTIRL_PUSH_KEY")
     if not key:
-        return
+        raise Exception("Missing rtirl push key.")
     # Start gpsd
-    subprocess.Popen(["/usr/sbin/gpsd", "-N", "-n", "-G", "${*}"])
+    subprocess.Popen(["/usr/sbin/gpsd", "-N", "-n", "-G"])
+
+    time.sleep(1)
 
     gpsd.connect()
 

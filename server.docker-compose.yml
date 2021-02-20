@@ -1,0 +1,17 @@
+version: "3.9"
+networks:
+  srt:
+services:
+  receiver:
+    image: muxfd/multipath-udp-receiver
+    command: ["-i", "0.0.0.0:1985", "-o", "relay:1935"]
+    networks:
+      - srt
+    ports:
+      - "1985:1985/udp"
+  relay:
+    image: muxfd/srt-relay
+    networks:
+      - srt
+    ports:
+      - "1935:1935/udp"

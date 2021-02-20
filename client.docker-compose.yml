@@ -1,0 +1,19 @@
+version: "3.9"
+networks:
+  srt:
+services:
+  transmuxer:
+    image: muxfd/muxbox-nginx-rtmp-srt-transmuxer
+    environment:
+      - SRT_RELAY_SERVER="sender:1985"
+    networks:
+      - srt
+    ports:
+      - "1935:1935"
+  sender:
+    image: muxfd/multipath-udp-sender
+    command: ["-i", "0.0.0.0:1985", "-o", "34.71.149.181:1985"]
+    networks:
+      - srt
+    ports:
+      - "1985:1985/udp"

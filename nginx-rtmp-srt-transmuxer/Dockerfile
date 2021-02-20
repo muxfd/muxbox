@@ -71,7 +71,8 @@ RUN rm -rf /tmp/build
 
 # Forward logs to Docker
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
-    ln -sf /dev/stderr /var/log/nginx/error.log
+    ln -sf /dev/stderr /var/log/nginx/error.log && \
+    ln -sf /dev/stdout /var/log/rtmp.info.log
 
 COPY nginx.conf /etc/nginx/nginx.conf
 

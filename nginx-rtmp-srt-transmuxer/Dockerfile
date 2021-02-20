@@ -1,7 +1,5 @@
 FROM ubuntu:20.04
 
-RUN apt-get -qq update && apt-get -qq upgrade
-
 ENV NGINX_VERSION nginx-1.19.3
 ENV FFMPEG_VERSION snapshot
 ENV NGINX_RTMP_MODULE_VERSION 1.2.1
@@ -11,7 +9,8 @@ ENV TZ=America/New_York
 
 ENV LD_LIBRARY_PATH=/usr/local/lib
 
-RUN apt-get -qq install git wget tclsh pkg-config cmake libssl-dev build-essential librtmp-dev yasm ca-certificates openssl libpcre3-dev
+RUN apt-get update && apt-get -y upgrade
+RUN apt-get -y install git wget tclsh pkg-config cmake libssl-dev build-essential librtmp-dev yasm ca-certificates openssl libpcre3-dev gettext-base
 
 # Install libsrt.
 RUN git clone https://github.com/Haivision/srt /tmp/build/srt
@@ -74,8 +73,11 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log && \
     ln -sf /dev/stdout /var/log/rtmp.info.log
 
-COPY nginx.conf /etc/nginx/nginx.conf
-
 EXPOSE 1935
 
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY ffmpeg.sh /ffmpeg.sh.template
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]

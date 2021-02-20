@@ -31,7 +31,7 @@ jobs:
         with:
           context: ./srt-relay
           file: ./srt-relay/Dockerfile
-          platforms: linux/amd64
+          platforms: linux/386,linux/amd64
           push: true
           tags: |
             muxfd/muxbox-srt-relay:latest

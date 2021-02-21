@@ -43,7 +43,7 @@ chmod +x /usr/local/bin/docker-compose
 
 # Configure iptables
 echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
-echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
+echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
 
 apt install -y iptables-persistent
 

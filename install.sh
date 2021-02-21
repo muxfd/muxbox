@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Clone repository
-apt -qq update
-apt -qq install git
+apt update
+apt install -y git
 
 git clone https://github.com/muxfd/muxbox
 
@@ -23,8 +23,8 @@ add-apt-repository \
    $(lsb_release -cs) \
    stable"
 
-apt -qq update
-apt -qq install docker-ce docker-ce-cli containerd.io
+apt update
+apt install -y docker-ce docker-ce-cli containerd.io
 
 # Install docker-compose
 curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
@@ -42,7 +42,10 @@ chmod +x /usr/local/bin/docker-compose
 # service speedify-sharing restart
 
 # Configure iptables
-apt -qq install iptables-persistent
+echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
+echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
+
+apt install -y iptables-persistent
 
 iptables -t mangle -I POSTROUTING -j TTL --ttl-set 65
 iptables -t mangle -I PREROUTING -j TTL --ttl-set 65

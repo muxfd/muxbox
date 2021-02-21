@@ -31,15 +31,15 @@ curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compo
 chmod +x /usr/local/bin/docker-compose
 
 # Install speedify
-wget -qO- https://get.speedify.com | bash -
+# wget -qO- https://get.speedify.com | bash -
 
-/usr/share/speedify/speedify_cli login
-/usr/share/speedify/speedify_cli connect
-/usr/share/speedify/speedify_cli startupconnect on
+# /usr/share/speedify/speedify_cli login
+# /usr/share/speedify/speedify_cli connect
+# /usr/share/speedify/speedify_cli startupconnect on
 
-cp speedify.conf /etc/speedify/speedify.conf
+# cp speedify.conf /etc/speedify/speedify.conf
 
-service speedify-sharing restart
+# service speedify-sharing restart
 
 # Configure iptables
 apt -qq install iptables-persistent

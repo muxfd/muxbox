@@ -13,7 +13,7 @@ RUN apt-get update && apt-get -y upgrade
 RUN apt-get -y install git wget tclsh pkg-config cmake libssl-dev build-essential librtmp-dev yasm ca-certificates openssl libpcre3-dev gettext-base
 
 # Install libsrt.
-RUN git clone https://github.com/BELABOX/srt /tmp/build/srt
+RUN git clone https://github.com/Haivision/srt /tmp/build/srt
 
 WORKDIR /tmp/build/srt
 RUN ./configure

@@ -1,13 +1,14 @@
 version: "3.9"
 services:
   srt-relay:
-    build: muxbox/nginx-rtmp-srt-transmuxer
+    build: muxbox/muxbox-srt-relay
     ports:
-      - "1935:1935"
+      - "1935:1935/udp"
+      - "8080:8080"
+  srtla-rec:
+    build: muxbox/srtla-rec
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    env:
-      - SRT_RELAY_SERVER=host.docker.internal:1985
-  srtla-send:
-    build: muxbox/srtla-send
-    privileged: true
+    ports:
+      - "1985:1985/udp"
+    command: ["1985", "host.docker.internal", "1935"]

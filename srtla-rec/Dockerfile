@@ -12,6 +12,9 @@ RUN make -j $(getconf _NPROCESSORS_ONLN)
 
 FROM alpine:latest
 ENV LD_LIBRARY_PATH /lib:/usr/lib:/usr/local/lib64
+RUN apk update &&\
+    apk upgrade &&\
+    apk add --no-cache openssl libstdc++
 COPY --from=build /usr/local/bin/srt-* /usr/local/bin/
 COPY --from=build /usr/local/lib64/libsrt* /usr/local/lib64/
 COPY --from=build /tmp/srtla/srtla_rec /usr/local/bin/

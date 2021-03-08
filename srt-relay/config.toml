@@ -1,0 +1,54 @@
+[app]
+# Relay listen address
+address = "0.0.0.0:1935"
+
+# SRT protocol latency in ms
+# This should be a multiple of your expected RTT because SRT needs some time
+# to send and receive acknowledgements and retransmits to be effective.
+# The recommended latency is about ~2.5x RTT.
+latency = 800
+
+# Relay buffer size in bytes, 384000 -> 1 second @ 3Mbits
+# This determines the maximum delay tolerance for connected clients.
+# Clients which are more than buffersize behind the live edge are disconnected.
+buffersize = 1024000
+
+# Experimental: synchronize MPEG-TS clients to a GOP start
+# This should not increase playback delay, just make sure the client always
+# starts with a clean packet stream.
+# Currently just implemented for H.264
+#syncClients = false
+
+[api]
+# Set to false to disable the API endpoint
+enabled = true
+
+# API listening address
+address = ":8080"
+
+[auth]
+# Choose between available auth types (static and http)
+# for further config options see below
+#type = "static"
+
+[auth.static]
+# Streams are authenticated using a static list of allowed streamids
+# Each pattern is matched to the client streamid
+# in the form of <mode>/<stream-name>/<password>
+# Allows using * as wildcard (will match across slashes)
+#allow = ["*", "publish/foo/bar", "play/*"]
+
+[auth.http]
+# Streams are authenticated using HTTP POST calls against this URL
+# Should be compatible to nginx-rtmp on_publish/on_subscribe directives
+#url = "http://localhost:8080/publish"
+
+# auth timeout duration
+#timeout = "1s"
+
+# Value of the 'app' form-field to send in the POST request
+# Needed for compatibility with the RTMP-application field
+#application = "stream"
+
+# Key of the form-field to send the stream password in
+#passwordParam = "auth"

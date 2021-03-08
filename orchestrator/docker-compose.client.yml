@@ -11,3 +11,4 @@ services:
   srtla-send:
     build: muxbox/srtla-send
     privileged: true
+    command: ["1985", "${SRT_RELAY_SERVER}", "1985", "/ips"]

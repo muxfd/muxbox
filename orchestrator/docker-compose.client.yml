@@ -2,6 +2,7 @@ version: "3.9"
 services:
   nginx-rtmp-srt-transmuxer:
     build: muxbox/nginx-rtmp-srt-transmuxer
+    restart: always
     ports:
       - "1935:1935"
     extra_hosts:
@@ -10,5 +11,6 @@ services:
       - SRT_RELAY_SERVER=host.docker.internal:1985
   srtla-send:
     build: muxbox/srtla-send
+    restart: always
     privileged: true
     command: ["1985", "${SRT_RELAY_SERVER}", "1985", "/ips"]

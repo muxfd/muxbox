@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  nginx-rtmp-srt-transmuxer:
+    build: muxbox/nginx-rtmp-srt-transmuxer
+    ports:
+      - "1935:1935"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    env:
+      - SRT_RELAY_SERVER=host.docker.internal:1985
+  srtla-send:
+    build: muxbox/srtla-send
+    privileged: true

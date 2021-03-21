@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   nginx-rtmp-srt-transmuxer:
-    build: muxbox/nginx-rtmp-srt-transmuxer
+    build: muxbox/muxbox-nginx-rtmp-srt-transmuxer
     restart: always
     ports:
       - "1935:1935"
